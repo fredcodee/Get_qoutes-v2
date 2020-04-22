@@ -4,6 +4,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField
 from wtforms.validators import InputRequired, Email, Length
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.models import User
+from app import db
 from flask_login import login_user, login_required, logout_user
 
 forms = Blueprint('forms', __name__)

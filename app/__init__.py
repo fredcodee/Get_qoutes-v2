@@ -12,7 +12,7 @@ def create_app():
   Bootstrap(app)
 
   app.config['SECRET_KEY'] = 'ASpire2begreat'
-  app.config['SQLALCHEMY_DATABASE_URI'] = "#"
+  app.config['SQLALCHEMY_DATABASE_URI'] = "postgres://lywifhejfmnfjo:e5f2ad9ba18996a260f2aec724585962bf9a26f98e168350b51735f095039cf5@ec2-18-215-99-63.compute-1.amazonaws.com:5432/d7hqmeh7h3ho1t"
 
   db.init_app(app)
 
