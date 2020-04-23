@@ -1,0 +1,26 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+quotes
+{% endblock %}
+
+<!--{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='signin.css')}}">
+{% endblock %}-->
+
+{% block content %}
+  <div class="container">
+    <div class="contact">
+      <h1>{{current_user.username}}'s bookmarks</h1>
+    </div>
+      {%for bb in info%}
+        <div class="list-group">
+          <p class="mb-1">"{{bb.qoute}}"<span><a href="{{ url_for('main.delete', id=bb.id) }}"><button
+                  class="delete">Delete</button></a></span></p>
+        </div>
+        <hr>
+      {%endfor%}
+  </div>
+
+{% endblock%}

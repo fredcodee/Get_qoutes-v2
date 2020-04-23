@@ -34,7 +34,37 @@ def search():
   quotes=parse['quotes']
   return(render_template("quotespage.html", quotes=quotes))
   
+#bookmark quotes 
+@main.route("/bookmark/<idd>")
+@login_required
+def bookmark(idd):
+  get_q = "https://favqs.com/api/quotes/:quote_id/{idd}".format(idd=str(idd))
+  res = requests.get(get_q, headers={'Authorization': "Token token="+api_key, "Content-Type": "application/json"})
+  parse = res.json()
+  info = parse["body"]+" -"+parse["author"]
+  save_bookmark = Favourites(qoute=info, fav=current_user)
+  db.session.add(save_bookmark)
+  db.session.commit()
+  return(redirect(url_for('main.profile', username=current_user.username)))
 
-@main.route("/profile", methods=['POST', 'GET'])
-def profile():
+#delete bookmarks
+@main.route("/delete/<id>", methods=["POST"])
+@login_required
+def delete(id):
   pass
+
+@main.route("/<username>")
+@login_required
+def profile(username):
+  get_user = User.query.filter_by(username=username).first()
+
+  if not get_user or username != current_user.username:
+    abort(404)
+  
+  user_favourites= Favourites.query.all()
+  user_fav=[]
+  for info in user_favourites:
+    if info.fav.username == current_user.username:
+      user_fav.append(info)
+
+  return(render_template("profile.html", info=user_fav))

@@ -14,6 +14,14 @@ quotes
       {% for quote in quotes %}
         <div class="q_item">
           <p>"{{ quote["body"]}}"<span> -{{quote["author"]}}</span></p>
+          <div class="counts">
+            <ul>
+              <li>favourited- {{ quote["favorites_count"]}} </li>
+              <li> liked- {{ quote["upvotes_count"]}}</li>
+              <li>disliked- {{ quote["downvotes_count"]}}</li>
+              <li><a href="/bookmark/{{quote['id']}} ">bookmark</a></li>
+            </ul>
+          </div>
         </div>
       {%endfor%}
     </div>

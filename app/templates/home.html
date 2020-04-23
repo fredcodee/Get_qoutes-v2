@@ -27,7 +27,7 @@ Get_quotes
         <li class="active"><a href="#">Home</a></li>
         <li><a href="{{ url_for('forms.login') }}">Login</a></li>
         <li><a href="{{ url_for('forms.signup') }}">Sign Up</a></li>
-        <li><a href="{{ url_for('forms.signup') }}">{{current_user.username}}</a></li>
+        <li><a href="{{ url_for('main.profile', username=current_user.username)}}">{{current_user.username}}</a></li>
       </ul>
     </div>
     <!--/.nav-collapse -->
