@@ -1,0 +1,21 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+quotes
+{% endblock %}
+
+<!--{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('static', filename='signin.css')}}">
+{% endblock %}-->
+{% block content %}
+  <div class="container">
+    <div class="quoteslist">
+      {% for quote in quotes %}
+        <div class="q_item">
+          <p>"{{ quote["body"]}}"<span> -{{quote["author"]}}</span></p>
+        </div>
+      {%endfor%}
+    </div>
+  </div>
+{% endblock %}
