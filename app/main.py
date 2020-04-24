@@ -35,11 +35,13 @@ def search():
   return(render_template("quotespage.html", quotes=quotes))
   
 #bookmark quotes 
-@main.route("/bookmark/<idd>")
+@main.route("/bookmark/<body>/<author>")
 @login_required
-def bookmark(idd):
-  get_q = "https://favqs.com/api/quotes/:quote_id/{idd}".format(idd=str(idd))
-  res = requests.get(get_q, headers={'Authorization': "Token token="+api_key, "Content-Type": "application/json"})
+def bookmark(body,author):
+  #get_q = "https://favqs.com/api/quotes/:quote_id/"+str(idd)
+  """ there was a problem with the favqs api which didnt allow to get the quote ids so i had to improvise"""
+
+  res = requests.get(get_q, headers={'Authorization': "Token token="+api_key})
   parse = res.json()
   info = parse["body"]+" -"+parse["author"]
   save_bookmark = Favourites(qoute=info, fav=current_user)

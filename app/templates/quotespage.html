@@ -19,7 +19,7 @@ quotes
               <li>favourited- {{ quote["favorites_count"]}} </li>
               <li> liked- {{ quote["upvotes_count"]}}</li>
               <li>disliked- {{ quote["downvotes_count"]}}</li>
-              <li><a href="/bookmark/{{quote['id']}} ">bookmark</a></li>
+              <li><a href="/bookmark/{{quote['body']}}/{{quote['author']}}">bookmark</a></li>
             </ul>
           </div>
         </div>
