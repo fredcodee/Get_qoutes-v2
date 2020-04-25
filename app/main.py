@@ -39,12 +39,12 @@ def search():
 @login_required
 def bookmark(body,author):
   #get_q = "https://favqs.com/api/quotes/:quote_id/"+str(idd)
-  """ there was a problem with the favqs api which didnt allow to get the quote ids so i had to improvise"""
-
-  res = requests.get(get_q, headers={'Authorization': "Token token="+api_key})
-  parse = res.json()
-  info = parse["body"]+" -"+parse["author"]
-  save_bookmark = Favourites(qoute=info, fav=current_user)
+  #res = requests.get(get_q, headers={'Authorization': "Token token="+api_key})
+  #parse = res.json()
+  #info = parse["body"]+" -"+parse["author"]
+  """ there was a problem with the favqs api which didnt allow me to get the quote ids so i had to improvise by directly saving the quotes and author in variable"""
+  get_q= body +" -"+ author
+  save_bookmark = Favourites(qoute=get_q, fav=current_user)
   db.session.add(save_bookmark)
   db.session.commit()
   return(redirect(url_for('main.profile', username=current_user.username)))
