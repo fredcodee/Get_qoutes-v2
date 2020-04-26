@@ -16,7 +16,7 @@ quotes
     </div>
       {%for bb in info%}
         <div class="list-group">
-          <p class="mb-1">"{{bb.qoute}}"<span><a href="{{ url_for('main.delete', id=bb.id) }}"><button
+          <p class="mb-1">"{{bb.qoute}}"<span><a href="/delete/{{bb.id}}"><button
                   class="delete">Delete</button></a></span></p>
         </div>
         <hr>

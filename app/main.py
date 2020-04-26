@@ -50,10 +50,14 @@ def bookmark(body,author):
   return(redirect(url_for('main.profile', username=current_user.username)))
 
 #delete bookmarks
-@main.route("/delete/<id>", methods=["POST"])
+@main.route("/delete/<id>")
 @login_required
 def delete(id):
-  pass
+  get_q= Favourites.query.get(int(id))
+  db.session.delete(get_q)
+  db.session.commit()
+  return(redirect(url_for('main.profile', username=current_user.username)))
+
 
 @main.route("/<username>")
 @login_required
