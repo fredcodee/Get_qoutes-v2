@@ -11,6 +11,9 @@ quotes
 
 {% block content %}
   <div class="container">
+    <div>
+      <a href="{{ url_for('main.home')}}"><button>go back to home</button></a>
+    </div>
     <div class="contact">
       <h1>{{current_user.username}}'s bookmarks</h1>
     </div>

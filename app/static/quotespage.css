@@ -2,6 +2,10 @@
   margin-top: 3rem;
   text-align: center;
 }
+.q_item p{
+  font-size: 1.9rem;
+}
+
 
 .counts ul{
   list-style: none;
@@ -10,4 +14,5 @@
 
 .counts ul li{
   padding-right: 2rem;
+  font-size: 1.3rem;
 }
