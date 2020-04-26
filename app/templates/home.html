@@ -4,10 +4,10 @@
 Get_quotes
 {% endblock %}>
 
-<!--{% block styles %}
+{% block styles %}
 {{super()}}
-<link rel="stylesheet" href="{{url_for('static', filename='starter-template.css')}}">
-{% endblock %}-->
+<link rel="stylesheet" href="{{url_for('static', filename='home.css')}}">
+{% endblock %}
 
 {% block content %}
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -20,14 +20,17 @@ Get_quotes
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Project name</a>
+      <a class="navbar-brand" href="{{ url_for('main.home')}}">Get Quotes</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="{{ url_for('forms.login') }}">Login</a></li>
-        <li><a href="{{ url_for('forms.signup') }}">Sign Up</a></li>
-        <li><a href="{{ url_for('main.profile', username=current_user.username)}}">{{current_user.username}}</a></li>
+        <li class="active"><a href="{{ url_for('main.home')}}">Home</a></li>
+        {% if not current_user.is_authenticated %}
+          <li><a href="{{ url_for('forms.login') }}">Login</a></li>
+          <li><a href="{{ url_for('forms.signup') }}">Sign Up</a></li>
+        {%else%}
+          <li><a href="{{ url_for('main.profile', username=current_user.username)}}">{{current_user.username}}</a></li>
+        {% endif %}
       </ul>
     </div>
     <!--/.nav-collapse -->
@@ -37,9 +40,8 @@ Get_quotes
 <div class="container">
 
   <div class="starter-template">
-    <h1>Bootstrap starter template</h1>
-    <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a
-      mostly barebones HTML document.</p>
+    <h1>Quote of the Day</h1>
+    <p class="lead">"{{q_day}}"- {{author}}</p>
   </div>
   <div class="search">
     {% with messages = get_flashed_messages() %}
@@ -52,15 +54,11 @@ Get_quotes
     <form action="/search" method="POST">
       <div class="form-group">
         <input type="text" class="form-control" name="word" autofocus aria-describedby="bookHelp"
-          placeholder="ISBN, Title or Author ">
+          placeholder="search any word ">
         <small id="bookHelp" class="form-text">Example: Motivation </small>
       </div>
       <input type="submit">
     </form>
   </div>
-  <div class="q_day">
-    <p>"{{q_day}}"-{{author}}</p>
-  </div>
-
 </div><!-- /.container -->
 {% endblock %}
