@@ -1,0 +1,13 @@
+.quoteslist{
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.counts ul{
+  list-style: none;
+  display: inline-flex;
+}
+
+.counts ul li{
+  padding-right: 2rem;
+}
