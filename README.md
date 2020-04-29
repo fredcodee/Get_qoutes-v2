@@ -26,7 +26,7 @@
 - Install requisite python packages and modules.
 > pip install -r requirements.txt
 
-**Before you run go to __init__.py file in the app folder and change the DATABASE_URI to yours **
+**Before you run go to __init__.py file in the app folder and change the DATABASE_URI to yours (postgress) **
 
 ###### here is a preview of the web app
 ![alt text](https://github.com/fredcodee/Get_qoutes-v2/blob/master/images/homepage.png)
