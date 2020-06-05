@@ -32,7 +32,7 @@ def login():
          return(redirect(url_for('main.home')))
     else:
       flash('username or password incorrect')
-      return(redirect(url_for("main.login")))
+      return(redirect(url_for('forms.login')))
 
   return(render_template("login.html", form=form))
 
